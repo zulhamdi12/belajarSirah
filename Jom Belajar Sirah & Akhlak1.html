@@ -1,0 +1,953 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jom Belajar Sirah & Akhlak</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EAF4EE; --surface:#FFFFFF; --ink:#12352E; --muted:#4F6B64; --line:#CFE3D8;
+  --brand:#0F6B5A; --brand-ink:#FFFFFF; --brand-shadow:#0A4A3E; --gold:#E8A317;
+  --ok:#23824A; --ok-bg:#DDF3E5; --bad:#C8452F; --bad-bg:#FBE1DC; --note:#FFF4D6;
+  --t1:#0F6B5A; --t1-ink:#FFFFFF; --t1-sh:#0A4A3E;
+  --t2:#F2B33D; --t2-ink:#3A2600; --t2-sh:#C98A17;
+  --t3:#5B4BB7; --t3-ink:#FFFFFF; --t3-sh:#3F3389;
+  --t4:#1F6FA8; --t4-ink:#FFFFFF; --t4-sh:#154E78;
+  --t5:#D9577A; --t5-ink:#FFFFFF; --t5-sh:#A33A58;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1E26; --surface:#16303A; --ink:#EAF4EE; --muted:#A9C2BB; --line:#26474F;
+    --brand:#2FA58A; --brand-ink:#04160F; --brand-shadow:#1B6B59; --gold:#F2C14E;
+    --ok:#2E9E5B; --ok-bg:#173F2B; --bad:#E0634E; --bad-bg:#4A2420; --note:#38301A;
+    --t1:#1F8F77; --t1-sh:#136152; --t2:#E6A82E; --t2-ink:#2A1B00; --t2-sh:#A8771A;
+    --t3:#6E5FD0; --t3-sh:#4A3EA0; --t4:#2C83C2; --t4-sh:#1C5A88; --t5:#D65F80; --t5-sh:#9C3C58;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1E26; --surface:#16303A; --ink:#EAF4EE; --muted:#A9C2BB; --line:#26474F;
+  --brand:#2FA58A; --brand-ink:#04160F; --brand-shadow:#1B6B59; --gold:#F2C14E;
+  --ok:#2E9E5B; --ok-bg:#173F2B; --bad:#E0634E; --bad-bg:#4A2420; --note:#38301A;
+  --t1:#1F8F77; --t1-sh:#136152; --t2:#E6A82E; --t2-ink:#2A1B00; --t2-sh:#A8771A;
+  --t3:#6E5FD0; --t3-sh:#4A3EA0; --t4:#2C83C2; --t4-sh:#1C5A88; --t5:#D65F80; --t5-sh:#9C3C58;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Baloo 2","Trebuchet MS","Segoe UI",system-ui,sans-serif;font-size:18px;line-height:1.45}
+.wrap{max-width:740px;margin:0 auto;padding:14px 18px 44px}
+button{font:inherit;cursor:pointer;color:inherit}
+button:disabled{cursor:default}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+img,svg{max-width:100%}
+
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:44px}
+.link{background:none;border:0;color:var(--muted);text-decoration:underline;font-size:15px;padding:6px}
+.iconbtn{background:var(--surface);border:2px solid var(--line);border-radius:999px;width:44px;height:44px;font-size:20px;display:grid;place-items:center;flex:none;padding:0}
+
+.hero{position:relative;text-align:center;padding:18px 0 4px}
+.hero > svg{position:absolute;left:50%;top:44px;width:min(230px,62vw);height:auto;transform:translateX(-50%);opacity:.2;pointer-events:none}
+.hero h1{position:relative;margin:0;font-size:clamp(34px,8.5vw,54px);line-height:1.02;font-weight:800;color:var(--brand)}
+.greet{position:relative;display:flex;align-items:flex-end;justify-content:center;gap:8px;margin-top:14px}
+.greet .mascot{width:112px;animation:idle 3.5s ease-in-out infinite}
+.bubble{background:var(--surface);border:2px solid var(--line);border-radius:18px 18px 18px 4px;padding:10px 14px;max-width:270px;text-align:left;font-size:17px;line-height:1.35;margin-bottom:34px}
+.bubble b{color:var(--brand)}
+.namecard{display:flex;flex-direction:column;gap:8px;text-align:left}
+.namecard label{font-weight:700}
+.namecard input{font:inherit;font-size:19px;padding:8px 12px;border-radius:12px;border:2px solid var(--line);background:var(--bg);color:var(--ink);width:100%}
+
+.levels{display:flex;background:var(--surface);border:2px solid var(--line);border-radius:999px;padding:4px;max-width:360px;margin:6px auto 22px}
+.levels button{flex:1;border:0;background:transparent;border-radius:999px;padding:8px 10px;font-weight:700;color:var(--muted)}
+.levels button[aria-pressed="true"]{background:var(--brand);color:var(--brand-ink)}
+
+.games{display:grid;gap:16px;grid-template-columns:1fr}
+@media (min-width:600px){.games{grid-template-columns:1fr 1fr}.tile.wide{grid-column:1/-1}}
+.tile{display:flex;align-items:center;gap:14px;width:100%;text-align:left;border:0;border-radius:22px;padding:16px 18px;background:var(--tc);color:var(--tink);box-shadow:0 5px 0 var(--tsh);transition:transform .08s,box-shadow .08s}
+.tile:active{transform:translateY(4px);box-shadow:0 1px 0 var(--tsh)}
+.tile.t1{--tc:var(--t1);--tink:var(--t1-ink);--tsh:var(--t1-sh)}
+.tile.t2{--tc:var(--t2);--tink:var(--t2-ink);--tsh:var(--t2-sh)}
+.tile.t3{--tc:var(--t3);--tink:var(--t3-ink);--tsh:var(--t3-sh)}
+.tile.t4{--tc:var(--t4);--tink:var(--t4-ink);--tsh:var(--t4-sh)}
+.tile.t5{--tc:var(--t5);--tink:var(--t5-ink);--tsh:var(--t5-sh)}
+.tile .ico{font-size:40px;line-height:1;flex:none}
+.tile h2{margin:0;font-size:23px;line-height:1.1}
+.tile p{margin:3px 0 0;font-size:15.5px;opacity:.93;line-height:1.3}
+.tile .best{margin-left:auto;font-size:14px;white-space:nowrap;flex:none;text-align:right}
+.tile .best .off{opacity:.3;filter:grayscale(1)}
+.tile .thumb{width:110px;aspect-ratio:16/10;border-radius:14px;overflow:hidden;flex:none;border:3px solid rgba(255,255,255,.5)}
+.tile .thumb svg{display:block;width:100%;height:100%}
+@media (max-width:420px){.tile .thumb{width:82px}.tile{padding:14px}.tile .ico{font-size:34px}.tile h2{font-size:21px}}
+
+.badges{margin-top:30px}
+.badges h3{margin:0 0 10px;font-size:22px;color:var(--brand)}
+.bgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(108px,1fr));gap:10px}
+.badge{background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:10px 8px;text-align:center;font-size:14px;line-height:1.2;font-weight:700}
+.badge .bm{display:block;font-size:32px;margin-bottom:4px}
+.badge small{display:block;font-weight:500;color:var(--muted);margin-top:3px;font-size:12.5px}
+.badge.locked{opacity:.65}
+.badge.got{border-color:var(--gold);background:var(--note)}
+.foot{margin-top:26px;color:var(--muted);font-size:15px;text-align:center}
+
+.gamehead{display:flex;align-items:center;gap:12px;margin:4px 0 12px}
+.gamehead h2{margin:0;font-size:23px;flex:1;color:var(--brand);line-height:1.15}
+.progress{height:12px;background:var(--line);border-radius:99px;overflow:hidden;margin-bottom:16px}
+.progress span{display:block;height:100%;background:var(--gold);border-radius:99px;transition:width .3s}
+.card{background:var(--surface);border:2px solid var(--line);border-radius:24px;padding:20px}
+.page-in{animation:pagein .35s ease}
+@keyframes pagein{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
+
+.scene{border-radius:18px;overflow:hidden;aspect-ratio:16/9;margin:0 0 16px;background:#1A244F}
+.scene.short{aspect-ratio:2/1}
+.scene svg{display:block;width:100%;height:100%}
+.qrow{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px}
+.qnum{color:var(--muted);font-size:16px;margin:0}
+.tools{display:flex;gap:8px}
+.pill{border:2px solid var(--line);background:var(--bg);border-radius:999px;padding:3px 12px;font-size:15px;font-weight:700}
+.pill:disabled{opacity:.4}
+.qtext{font-size:clamp(21px,4.8vw,27px);font-weight:700;line-height:1.3;margin:0 0 16px}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:center;width:100%;border:2px solid var(--line);background:var(--bg);border-radius:16px;padding:11px 14px;text-align:left;font-size:19px;font-weight:600;line-height:1.3;transition:opacity .25s}
+.opt .k{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--surface);border:2px solid var(--line);flex:none;font-size:16px;font-weight:800}
+.opt.ok{border-color:var(--ok);background:var(--ok-bg)}
+.opt.ok .k{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.bad{border-color:var(--bad);background:var(--bad-bg)}
+.opt.bad .k{background:var(--bad);border-color:var(--bad);color:#fff}
+.opt.gone{opacity:.25;text-decoration:line-through}
+
+.feedback{display:flex;gap:12px;align-items:center;margin-top:16px;padding:12px 14px;border-radius:18px;background:var(--note);font-size:17px;line-height:1.4}
+.feedback .mascot{width:76px}
+.feedback strong{display:block;font-size:21px}
+.streak{display:inline-block;background:var(--gold);color:#3A2600;border-radius:999px;padding:0 10px;font-weight:800;font-size:15px;margin:2px 0 4px}
+.primary{display:block;width:100%;margin-top:14px;border:0;border-radius:16px;padding:13px;background:var(--brand);color:var(--brand-ink);font-size:20px;font-weight:800;box-shadow:0 4px 0 var(--brand-shadow)}
+.primary:active{transform:translateY(3px);box-shadow:0 1px 0 var(--brand-shadow)}
+.secondary{display:block;width:100%;margin-top:12px;border:2px solid var(--line);background:transparent;border-radius:16px;padding:11px;font-size:18px;font-weight:700}
+
+/* Story */
+.storytext{font-size:clamp(20px,4.4vw,24px);font-weight:600;line-height:1.45;margin:0 0 16px;min-height:4.4em}
+.storynav{display:grid;grid-template-columns:52px auto 1fr;gap:8px;align-items:center}
+.storynav .primary,.storynav .secondary{margin:0;padding:11px 6px;font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.storynav .pill{white-space:nowrap}
+.storynav .secondary:disabled{opacity:.35}
+.dots{display:flex;justify-content:center;gap:6px;margin-top:14px}
+.dots i{width:9px;height:9px;border-radius:50%;background:var(--line)}
+.dots i.on{background:var(--gold);width:22px;border-radius:99px}
+.slist{display:grid;gap:14px}
+.sitem{display:flex;gap:14px;align-items:center;width:100%;text-align:left;background:var(--surface);border:2px solid var(--line);border-radius:20px;padding:10px;box-shadow:0 4px 0 var(--line)}
+.sitem .thumb{width:130px;aspect-ratio:16/10;border-radius:14px;overflow:hidden;flex:none}
+.sitem .thumb svg{display:block;width:100%;height:100%}
+.sitem h3{margin:0;font-size:21px;line-height:1.15;color:var(--brand)}
+.sitem p{margin:2px 0 0;font-size:15px;color:var(--muted)}
+.sitem .done{margin-left:auto;font-size:24px;padding-right:6px}
+@media (max-width:420px){.sitem .thumb{width:96px}}
+
+/* Akhlak swipe */
+.swipe-area{position:relative;min-height:250px;display:grid;place-items:center;overflow:hidden;padding:6px 4px 12px}
+.swipecard{position:relative;width:100%;max-width:440px;background:var(--surface);border:3px solid var(--line);border-radius:26px;padding:26px 20px 20px;text-align:center;touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:grab;transition:transform .25s,opacity .3s;box-shadow:0 8px 0 var(--line)}
+.swipecard:active{cursor:grabbing}
+.swipecard .emo{font-size:72px;line-height:1;margin-bottom:8px}
+.swipecard .qtext{margin:0}
+.lean{position:absolute;top:12px;font-weight:800;font-size:16px;padding:2px 10px;border-radius:999px;opacity:0;transition:opacity .15s;color:#fff}
+.lean.l{left:12px;background:var(--bad)}
+.lean.r{right:12px;background:var(--ok)}
+.swipecard[data-lean="bad"]{border-color:var(--bad)}
+.swipecard[data-lean="bad"] .lean.l{opacity:1}
+.swipecard[data-lean="good"]{border-color:var(--ok)}
+.swipecard[data-lean="good"] .lean.r{opacity:1}
+.ask{color:var(--muted);text-align:center;margin:0 0 12px;font-size:16px}
+.tf{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tf button{border:0;border-radius:18px;padding:12px 8px;font-size:20px;font-weight:800;color:#fff;line-height:1.2}
+.tf button span{display:block;font-size:28px}
+.tf .good{background:var(--ok);box-shadow:0 4px 0 color-mix(in srgb,var(--ok) 70%,#000)}
+.tf .badb{background:var(--bad);box-shadow:0 4px 0 color-mix(in srgb,var(--bad) 70%,#000)}
+.verdict{text-align:center;padding:10px}
+.verdict .emo{font-size:56px;line-height:1}
+.stamp{display:inline-block;margin-top:8px;padding:4px 16px;border-radius:12px;font-weight:800;font-size:22px;color:#fff;transform:rotate(-4deg)}
+.stamp.g{background:var(--ok)}.stamp.b{background:var(--bad)}
+
+/* Susun */
+.hint{color:var(--muted);font-size:16px;margin:-8px 0 14px}
+.slots{list-style:none;margin:0 0 16px;padding:0;display:grid;gap:8px}
+.slot{display:flex;gap:10px;align-items:center;min-height:50px;border:2px dashed var(--line);border-radius:14px;padding:7px 12px;line-height:1.3}
+.slot .n{width:30px;height:30px;border-radius:50%;background:var(--line);display:grid;place-items:center;font-weight:800;flex:none}
+.slot.filled{border-style:solid;border-color:var(--ok);background:var(--ok-bg);font-weight:600;animation:pop .3s ease}
+.slot.filled .n{background:var(--ok);color:#fff}
+@keyframes pop{50%{transform:scale(1.03)}}
+.chips{display:grid;gap:8px}
+.chip{width:100%;border:2px solid var(--line);background:var(--bg);border-radius:14px;padding:10px 14px;text-align:left;font-size:18px;font-weight:600;line-height:1.3}
+.chip.shake{animation:shake .4s;border-color:var(--bad);background:var(--bad-bg)}
+@keyframes shake{20%{transform:translateX(-7px)}40%{transform:translateX(7px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
+
+/* Padan kad */
+.mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.mgrid.g4{grid-template-columns:repeat(4,1fr);gap:8px}
+.mcard{aspect-ratio:3/4;border:0;padding:0;background:none;perspective:700px}
+.mcard .in{position:relative;display:block;width:100%;height:100%;transition:transform .45s;transform-style:preserve-3d}
+.mcard.open .in,.mcard.matched .in{transform:rotateY(180deg)}
+.mcard .f,.mcard .b{position:absolute;inset:0;border-radius:14px;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:grid;place-items:center;padding:6px;text-align:center}
+.mcard .f{background:var(--t5);box-shadow:inset 0 -5px 0 var(--t5-sh)}
+.mcard .f svg{width:60%;height:auto;opacity:.75}
+.mcard .b{transform:rotateY(180deg);background:var(--surface);border:2px solid var(--line);font-weight:700;font-size:14px;line-height:1.2;overflow-wrap:anywhere;hyphens:auto}
+.mcard .b.kb{background:var(--note)}
+.mcard.matched .b{border-color:var(--ok);background:var(--ok-bg)}
+.mcard.matched{animation:pop .35s ease .4s}
+.mgrid.g4 .mcard .b{font-size:12.5px;padding:3px}
+.moves{display:flex;justify-content:space-between;color:var(--muted);font-size:16px;margin-bottom:12px}
+
+/* Result */
+.result{text-align:center}
+.result .mascot{width:120px;margin:0 auto}
+.result .stars{font-size:54px;letter-spacing:6px;line-height:1.1;margin:4px 0}
+.result .stars .off{filter:grayscale(1);opacity:.25}
+.result h2{margin:4px 0 2px;font-size:32px;color:var(--brand)}
+.result p{margin:0 0 6px;color:var(--muted)}
+.newbadge{display:inline-block;margin:6px 4px 0;background:var(--note);border:2px solid var(--gold);border-radius:999px;padding:2px 12px;font-weight:700}
+
+.toast{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;font-weight:700;z-index:60;box-shadow:0 6px 20px rgba(0,0,0,.25);animation:toastin .3s ease;max-width:92vw;text-align:center}
+.toast.out{opacity:0;transition:opacity .4s}
+@keyframes toastin{from{transform:translate(-50%,20px);opacity:0}}
+
+.rain{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:50}
+.rain span{position:absolute;top:-50px;font-size:28px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(115vh) rotate(300deg)}}
+
+/* Mascot */
+.mascot{display:block;height:auto;flex:none}
+.mascot.happy{animation:hop .45s ease 2}
+.mascot.sad{animation:tilt .9s ease}
+@keyframes hop{50%{transform:translateY(-10px)}}
+@keyframes tilt{30%{transform:rotate(-8deg)}70%{transform:rotate(4deg)}}
+@keyframes idle{50%{transform:translateY(-4px)}}
+
+/* Scene animation */
+.tw{animation:tw 2.6s ease-in-out infinite}
+@keyframes tw{50%{opacity:.2}}
+.float{animation:float 4s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-4px)}}
+.pulse{animation:pulse 3s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes pulse{50%{transform:scale(1.08);opacity:.85}}
+.drift{animation:drift 26s linear infinite}
+@keyframes drift{from{transform:translateX(-70px)}to{transform:translateX(340px)}}
+.fly{animation:fly 8s linear infinite}
+@keyframes fly{from{transform:translate(-70px,10px)}to{transform:translate(340px,-12px)}}
+.walk{animation:walk 18s linear infinite}
+@keyframes walk{from{transform:translateX(-150px)}to{transform:translateX(330px)}}
+.bob{animation:bob .7s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-1.5px)}}
+.sway{animation:sway 4s ease-in-out infinite;transform-box:fill-box;transform-origin:50% 100%}
+@keyframes sway{50%{transform:rotate(4deg)}}
+.wave{animation:wave 1.4s ease-in-out infinite;transform-box:fill-box;transform-origin:0 50%}
+@keyframes wave{50%{transform:skewY(8deg) scaleX(.88)}}
+.rise{animation:rise 4s linear infinite}
+@keyframes rise{from{transform:translateY(0);opacity:1}to{transform:translateY(-150px);opacity:0}}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rain{display:none}
+}
+</style>
+</head>
+<body>
+<main class="wrap" id="app"></main>
+
+<script>
+/* =================== DATA =================== */
+// a[0] ialah jawapan betul; pilihan dikocok semasa dipaparkan. s = gambar latar.
+const SIRAH = [
+  {l:1,s:"makkah",q:"Di manakah Nabi Muhammad SAW dilahirkan?",a:["Makkah","Madinah","Taif","Syam"],e:"Nabi Muhammad SAW dilahirkan di kota Makkah."},
+  {l:1,s:"makkah",q:"Siapakah nama bapa Nabi Muhammad SAW?",a:["Abdullah","Abu Talib","Abdul Muttalib","Abu Bakar"],e:"Bapa baginda ialah Abdullah. Beliau wafat sebelum Nabi SAW dilahirkan."},
+  {l:1,s:"makkah",q:"Siapakah nama ibu Nabi Muhammad SAW?",a:["Aminah","Halimatus Saadiah","Khadijah","Fatimah"],e:"Ibu baginda ialah Aminah binti Wahab."},
+  {l:1,s:"kemah",q:"Siapakah ibu susuan Nabi Muhammad SAW?",a:["Halimatus Saadiah","Aminah","Aisyah","Fatimah"],e:"Halimatus Saadiah menyusukan dan menjaga Nabi SAW di kampung Bani Saad."},
+  {l:1,s:"gajah",q:"Nabi Muhammad SAW dilahirkan pada tahun…",a:["Tahun Gajah","Tahun Kuda","Tahun Hijrah","Tahun Unta"],e:"Baginda lahir pada Tahun Gajah, iaitu tahun tentera bergajah Abrahah cuba menyerang Kaabah."},
+  {l:1,s:"makkah",q:"Apakah gelaran Nabi SAW kerana baginda sangat jujur dan amanah?",a:["Al-Amin","As-Siddiq","Al-Faruq","Saifullah"],e:"Al-Amin bermaksud orang yang dipercayai."},
+  {l:1,s:"hira",q:"Di manakah Nabi SAW menerima wahyu yang pertama?",a:["Gua Hira’","Gua Thur","Gua Kahfi","Bukit Uhud"],e:"Wahyu pertama diturunkan di Gua Hira’ yang terletak di Jabal Nur."},
+  {l:1,s:"hira",q:"Malaikat manakah yang menyampaikan wahyu kepada Nabi SAW?",a:["Jibril","Mikail","Israfil","Izrail"],e:"Malaikat Jibril bertugas menyampaikan wahyu kepada para nabi dan rasul."},
+  {l:1,s:"unta",q:"Siapakah isteri pertama Nabi Muhammad SAW?",a:["Siti Khadijah","Siti Aisyah","Siti Hafsah","Siti Fatimah"],e:"Siti Khadijah ialah isteri pertama baginda dan orang pertama yang beriman."},
+  {l:1,s:"makkah",q:"Siapakah bapa saudara yang menjaga Nabi SAW selepas datuknya wafat?",a:["Abu Talib","Abu Lahab","Abu Jahal","Abu Sufyan"],e:"Abu Talib menjaga dan melindungi Nabi SAW dengan penuh kasih sayang."},
+  {l:1,s:"unta",q:"Nabi Muhammad SAW berhijrah dari Makkah ke…",a:["Madinah","Taif","Syam","Yaman"],e:"Baginda berhijrah ke Madinah atas perintah Allah SWT."},
+  {l:1,s:"thur",q:"Siapakah sahabat yang menemani Nabi SAW semasa berhijrah?",a:["Abu Bakar As-Siddiq","Umar Al-Khattab","Uthman bin Affan","Ali bin Abi Talib"],e:"Abu Bakar As-Siddiq menemani baginda. Ali bin Abi Talib pula tidur di tempat tidur Nabi SAW."},
+  {l:1,s:"masjid",q:"Apakah masjid pertama yang dibina oleh Nabi SAW?",a:["Masjid Quba","Masjid Nabawi","Masjidil Haram","Masjid Al-Aqsa"],e:"Masjid Quba dibina semasa baginda dalam perjalanan hijrah ke Madinah."},
+  {l:1,s:"masjid",q:"Siapakah muazzin pertama dalam Islam?",a:["Bilal bin Rabah","Abu Bakar As-Siddiq","Zaid bin Harithah","Umar Al-Khattab"],e:"Bilal bin Rabah dipilih kerana suaranya yang merdu dan lantang."},
+  {l:1,s:"langit",q:"Dalam peristiwa Israk Mikraj, umat Islam diperintahkan…",a:["Solat lima waktu","Berpuasa","Mengeluarkan zakat","Menunaikan haji"],e:"Perintah solat lima waktu diterima oleh Nabi SAW dalam peristiwa Israk Mikraj."},
+  {l:2,s:"hira",q:"Berapakah umur Nabi SAW ketika menerima wahyu pertama?",a:["40 tahun","25 tahun","30 tahun","63 tahun"],e:"Baginda menerima wahyu pertama ketika berumur 40 tahun."},
+  {l:2,s:"hira",q:"Wahyu pertama yang diturunkan ialah…",a:["Surah Al-Alaq ayat 1–5","Surah Al-Fatihah","Surah Al-Ikhlas","Surah Al-Baqarah"],e:"Wahyu pertama ialah Surah Al-Alaq ayat 1 hingga 5 yang bermula dengan “Iqra’” (bacalah)."},
+  {l:2,s:"thur",q:"Semasa hijrah, Nabi SAW dan Abu Bakar bersembunyi di…",a:["Gua Thur","Gua Hira’","Gua Kahfi","Bukit Safa"],e:"Mereka bersembunyi di Gua Thur selama tiga hari daripada kejaran kaum Quraisy."},
+  {l:2,s:"madinah",q:"Apakah nama asal kota Madinah?",a:["Yathrib","Taif","Habsyah","Syam"],e:"Madinah dahulunya dikenali sebagai Yathrib."},
+  {l:2,s:"kemah",q:"Berapakah umur Nabi SAW ketika ibunya, Aminah, wafat?",a:["6 tahun","2 tahun","10 tahun","12 tahun"],e:"Aminah wafat di Abwa’ ketika Nabi SAW berumur 6 tahun."},
+  {l:2,s:"makkah",q:"Siapakah yang menjaga Nabi SAW selepas ibunya wafat?",a:["Abdul Muttalib","Abu Talib","Abu Lahab","Abbas"],e:"Datuk baginda, Abdul Muttalib, menjaga baginda sehingga beliau wafat."},
+  {l:2,s:"madinah",q:"Berapakah umur Nabi SAW ketika baginda wafat?",a:["63 tahun","60 tahun","53 tahun","70 tahun"],e:"Baginda wafat di Madinah ketika berumur 63 tahun."},
+  {l:2,s:"badar",q:"Apakah peperangan pertama dalam sejarah Islam?",a:["Perang Badar","Perang Uhud","Perang Khandaq","Perang Hunain"],e:"Perang Badar berlaku pada 17 Ramadan tahun 2 Hijrah."},
+  {l:2,s:"madinah",q:"Siapakah khalifah pertama selepas Nabi SAW wafat?",a:["Abu Bakar As-Siddiq","Umar Al-Khattab","Uthman bin Affan","Ali bin Abi Talib"],e:"Abu Bakar As-Siddiq dilantik sebagai khalifah pertama."},
+  {l:2,s:"unta",q:"Nabi SAW pernah berniaga ke Syam membawa barang dagangan milik…",a:["Siti Khadijah","Abu Talib","Abu Bakar","Abdul Muttalib"],e:"Kejujuran baginda dalam perniagaan ini membuatkan Siti Khadijah tertarik dengan akhlak baginda."},
+  {l:2,s:"unta",q:"Berapakah umur Nabi SAW ketika berkahwin dengan Siti Khadijah?",a:["25 tahun","40 tahun","20 tahun","30 tahun"],e:"Baginda berkahwin dengan Siti Khadijah ketika berumur 25 tahun."},
+  {l:2,s:"makkah",q:"Semasa Kaabah dibina semula, Nabi SAW menyelesaikan perselisihan tentang siapa yang patut meletakkan…",a:["Hajar Aswad","Maqam Ibrahim","Hijir Ismail","Telaga Zamzam"],e:"Baginda meletakkan Hajar Aswad di atas kain dan meminta ketua setiap kabilah mengangkatnya bersama-sama."},
+  {l:2,s:"langit",q:"Apakah nama kenderaan Nabi SAW dalam peristiwa Israk Mikraj?",a:["Buraq","Unta Qaswa","Kuda putih","Awan"],e:"Buraq ialah kenderaan yang membawa baginda dari Masjidil Haram ke Masjid Al-Aqsa."},
+  {l:2,s:"kemah",q:"Apakah perjanjian damai antara umat Islam dan kaum Quraisy?",a:["Perjanjian Hudaibiyah","Piagam Madinah","Baiah Aqabah","Perjanjian Taif"],e:"Perjanjian Hudaibiyah dimeterai pada tahun 6 Hijrah."},
+  {l:2,s:"makkah",q:"Pembukaan Kota Makkah (Fathu Makkah) berlaku pada tahun…",a:["8 Hijrah","2 Hijrah","5 Hijrah","10 Hijrah"],e:"Pada tahun 8 Hijrah, Nabi SAW memasuki Makkah dan memaafkan penduduk yang pernah memusuhi baginda."}
+];
+
+const AKHLAK = [
+  {m:"🍽️",t:"Amin membaca Bismillah sebelum makan.",g:true,x:"Membaca Bismillah sebelum makan ialah adab makan yang diajar oleh Rasulullah SAW."},
+  {m:"🥤",t:"Siti makan dan minum menggunakan tangan kiri.",g:false,x:"Kita dianjurkan makan dan minum dengan tangan kanan."},
+  {m:"🏠",t:"Hakim bersalam dan mencium tangan ibu bapanya sebelum ke sekolah.",g:true,x:"Menghormati ibu bapa ialah akhlak yang sangat disukai Allah."},
+  {m:"📢",t:"Aiman meninggikan suara ketika bercakap dengan ibunya.",g:false,x:"Kita mesti bercakap dengan lembut dan sopan kepada ibu bapa."},
+  {m:"🕌",t:"Danial berlari dan bergurau dengan kuat di dalam masjid.",g:false,x:"Masjid ialah rumah Allah. Kita perlu bertenang dan menjaga adab di dalamnya."},
+  {m:"👛",t:"Aisyah menjumpai dompet lalu menyerahkannya kepada guru.",g:true,x:"Ini sifat jujur dan amanah, seperti Nabi SAW yang digelar Al-Amin."},
+  {m:"📝",t:"Faris meniru jawapan kawan semasa ujian.",g:false,x:"Meniru ialah perbuatan tidak jujur. Berusahalah dengan kemampuan sendiri."},
+  {m:"🤧",t:"Apabila bersin, Zara mengucapkan “Alhamdulillah”.",g:true,x:"Ucapkan “Alhamdulillah” ketika bersin. Orang yang mendengar menjawab “Yarhamukallah”."},
+  {m:"👋",t:"Iman memberi salam apabila bertemu kawannya.",g:true,x:"Memberi salam menyebarkan kasih sayang sesama Muslim."},
+  {m:"😂",t:"Haziq mengejek kawan yang terjatuh di padang.",g:false,x:"Mengejek menyakitkan hati orang lain. Sebaliknya, bantulah kawan yang terjatuh."},
+  {m:"🛏️",t:"Sofia membaca doa dan tidur mengiring ke kanan.",g:true,x:"Ini adab tidur yang diamalkan oleh Rasulullah SAW."},
+  {m:"🗑️",t:"Adam membuang sampah merata-rata di kawasan sekolah.",g:false,x:"Kebersihan sebahagian daripada iman. Buanglah sampah ke dalam tong sampah."},
+  {m:"👂",t:"Irfan mendengar dengan teliti semasa ustazah mengajar.",g:true,x:"Menghormati guru dan menumpukan perhatian ialah adab menuntut ilmu."},
+  {m:"🤥",t:"Mia berbohong kepada ibunya tentang kerja sekolah.",g:false,x:"Berbohong ialah akhlak tercela. Bercakap benar walaupun sukar."},
+  {m:"📦",t:"Yusuf menolong jirannya mengangkat barang.",g:true,x:"Islam mengajar kita berbuat baik kepada jiran."},
+  {m:"🚪",t:"Luqman masuk ke rumah kawan tanpa memberi salam dan meminta izin.",g:false,x:"Kita perlu memberi salam dan meminta izin sebelum masuk ke rumah orang lain."},
+  {m:"🍱",t:"Puteri berkongsi bekal makanan dengan kawan yang tidak membawa bekal.",g:true,x:"Bersedekah dan berkongsi ialah sifat pemurah yang terpuji."},
+  {m:"🚶",t:"Ali makan sambil berjalan di dalam kelas.",g:false,x:"Adab makan ialah duduk dengan baik ketika makan."},
+  {m:"🧓",t:"Khalid bercakap dengan lemah lembut kepada datuknya.",g:true,x:"Menghormati orang yang lebih tua ialah akhlak terpuji."},
+  {m:"🤐",t:"Hana tidak menyampuk ketika orang lain sedang bercakap.",g:true,x:"Mendengar dahulu sebelum bercakap ialah tanda kita menghormati orang lain."}
+];
+
+const ROUNDS = [
+  {title:"Zaman kanak-kanak Nabi SAW",sc:"kemah",items:[
+    "Nabi Muhammad SAW lahir di Makkah",
+    "Disusukan oleh Halimatus Saadiah",
+    "Ibu baginda, Aminah, wafat di Abwa’",
+    "Dijaga oleh datuknya, Abdul Muttalib",
+    "Dijaga oleh bapa saudaranya, Abu Talib"],
+    note:"Walaupun menjadi yatim piatu sejak kecil, Allah menjaga baginda melalui insan-insan yang menyayanginya."},
+  {title:"Dari Al-Amin menjadi Rasul",sc:"hira",items:[
+    "Berniaga ke Syam membawa barang Siti Khadijah",
+    "Berkahwin dengan Siti Khadijah",
+    "Meletakkan Hajar Aswad di Kaabah",
+    "Menerima wahyu pertama di Gua Hira’",
+    "Peristiwa Israk Mikraj"],
+    note:"Sebelum menjadi Rasul lagi, baginda sudah terkenal dengan gelaran Al-Amin."},
+  {title:"Hijrah dan kehidupan di Madinah",sc:"madinah",items:[
+    "Bersembunyi di Gua Thur semasa hijrah",
+    "Membina Masjid Quba",
+    "Perang Badar",
+    "Perjanjian Hudaibiyah",
+    "Pembukaan Kota Makkah"],
+    note:"Ketika Kota Makkah dibuka, baginda memaafkan penduduk yang pernah memusuhinya."}
+];
+
+const STORIES = [
+  {id:"lahir",title:"Kelahiran Nabi SAW",sub:"Tahun Gajah dan zaman kanak-kanak",sc:"gajah",pages:[
+    {sc:"gajah",t:"Pada suatu ketika, Abrahah membawa tentera bergajah untuk meruntuhkan Kaabah. Allah menghantar burung Ababil yang melontar batu-batu kecil, lalu tentera itu kalah."},
+    {sc:"makkah",t:"Pada tahun itu, yang dinamakan Tahun Gajah, lahirlah seorang bayi yang mulia di Makkah. Namanya Muhammad. Bapanya, Abdullah, telah wafat sebelum baginda lahir."},
+    {sc:"kemah",t:"Baginda disusukan oleh Halimatus Saadiah di kampung Bani Saad. Sejak baginda tinggal di situ, kehidupan keluarga Halimah menjadi lebih berkat."},
+    {sc:"makkah",t:"Ketika berumur 6 tahun, ibunya, Aminah, wafat. Baginda dijaga oleh datuknya, Abdul Muttalib, dan kemudian oleh bapa saudaranya, Abu Talib."}],
+    q:{q:"Apakah nama burung yang dihantar Allah untuk mengalahkan tentera bergajah?",a:["Ababil","Merpati","Hud-hud","Helang"],e:"Kisah burung Ababil diceritakan dalam Surah Al-Fil."}},
+  {id:"wahyu",title:"Wahyu Pertama",sub:"Peristiwa di Gua Hira’",sc:"hira",pages:[
+    {sc:"hira",t:"Apabila dewasa, Nabi Muhammad SAW suka menyendiri di Gua Hira’ untuk bertafakur, iaitu memikirkan kebesaran Allah."},
+    {sc:"hira",t:"Ketika baginda berumur 40 tahun, Malaikat Jibril datang dan berkata, “Iqra’!” yang bermaksud “Bacalah!”"},
+    {sc:"langit",t:"Jibril menyampaikan Surah Al-Alaq ayat 1 hingga 5. Inilah wahyu pertama yang diturunkan kepada baginda."},
+    {sc:"makkah",t:"Baginda pulang ke rumah dalam keadaan gementar. Isterinya, Siti Khadijah, menenangkan baginda dan menjadi orang pertama yang beriman."}],
+    q:{q:"Apakah maksud perkataan “Iqra’”?",a:["Bacalah","Tulislah","Dengarlah","Berjalanlah"],e:"“Iqra’” bermaksud “Bacalah”. Islam sangat menggalakkan kita menuntut ilmu."}},
+  {id:"hijrah",title:"Hijrah ke Madinah",sub:"Perjalanan penuh keberanian",sc:"thur",pages:[
+    {sc:"makkah",t:"Kaum Quraisy semakin memusuhi umat Islam. Allah memerintahkan Nabi SAW supaya berhijrah ke Madinah."},
+    {sc:"makkah",t:"Pada malam itu, Ali bin Abi Talib tidur di tempat tidur Nabi SAW. Baginda keluar bersama Abu Bakar As-Siddiq dengan selamat."},
+    {sc:"thur",t:"Mereka bersembunyi di Gua Thur. Dengan izin Allah, labah-labah membuat sarang di pintu gua, lalu musuh tidak memeriksa ke dalam."},
+    {sc:"masjid",t:"Dalam perjalanan, baginda singgah di Quba dan membina Masjid Quba, masjid pertama dalam Islam."},
+    {sc:"madinah",t:"Penduduk Madinah menyambut baginda dengan gembira sambil menyanyikan “Tala‘al Badru ‘Alaina”."}],
+    q:{q:"Di manakah Nabi SAW dan Abu Bakar bersembunyi semasa hijrah?",a:["Gua Thur","Gua Hira’","Bukit Uhud","Masjid Quba"],e:"Mereka bersembunyi di Gua Thur selama tiga hari."}}
+];
+
+const PAIRS = [
+  ["Abdullah","Bapa Nabi SAW"],
+  ["Aminah","Ibu Nabi SAW"],
+  ["Halimatus Saadiah","Ibu susuan"],
+  ["Abu Talib","Bapa saudara yang menjaga"],
+  ["Siti Khadijah","Isteri pertama"],
+  ["Jibril","Penyampai wahyu"],
+  ["Bilal bin Rabah","Muazzin pertama"],
+  ["Abu Bakar","Teman ketika hijrah"],
+  ["Al-Amin","Orang yang dipercayai"],
+  ["Gua Hira’","Wahyu pertama"],
+  ["Gua Thur","Tempat bersembunyi"],
+  ["Masjid Quba","Masjid pertama"]
+];
+
+const PRAISE = ["Betul! MasyaAllah!","Hebat!","Tepat sekali!","Bagus!","Syabas!"];
+const LEVELS = {1:"Darjah 3–4",2:"Darjah 5–6"};
+
+/* =================== STATE =================== */
+const app = document.getElementById("app");
+const $ = id => document.getElementById(id);
+const shuffle = arr => { const a=arr.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]} return a; };
+const pick = arr => arr[Math.floor(Math.random()*arr.length)];
+const esc = s => String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function load(key, fallback){ try{ const v=localStorage.getItem(key); return v?JSON.parse(v):fallback; }catch(e){ return fallback; } }
+function save(key, val){ try{ localStorage.setItem(key, JSON.stringify(val)); }catch(e){} }
+
+let level = load("kafa-level", 1);
+let muted = load("kafa-muted", false);
+let pname = load("kafa-name", "");
+let best = Object.assign({quiz:0,akhlak:0,susun:0,padan:0}, load("kafa-best", {}));
+let stories = load("kafa-stories", []);
+let badges = load("kafa-badges", []);
+let run = null;
+const totalStars = () => best.quiz+best.akhlak+best.susun+best.padan;
+
+const BADGES = [
+  {id:"c1",m:"📖",n:"Pembaca Cerita",h:"Habiskan satu cerita",test:()=>stories.length>=1},
+  {id:"c3",m:"📚",n:"Pencinta Sirah",h:"Habiskan semua cerita",test:()=>stories.length>=STORIES.length},
+  {id:"quiz",m:"📜",n:"Ahli Sirah",h:"3 bintang dalam Kuiz Sirah",test:()=>best.quiz===3},
+  {id:"akhlak",m:"🤲",n:"Akhlak Mulia",h:"3 bintang dalam Terpuji atau Tercela",test:()=>best.akhlak===3},
+  {id:"susun",m:"🧭",n:"Penyusun Hebat",h:"3 bintang dalam Susun Peristiwa",test:()=>best.susun===3},
+  {id:"padan",m:"🧠",n:"Ingatan Kuat",h:"3 bintang dalam Padan Kad",test:()=>best.padan===3},
+  {id:"bintang",m:"🏆",n:"Bintang KAFA",h:"Kumpul 10 bintang",test:()=>totalStars()>=10}
+];
+
+/* =================== SOUND & SPEECH =================== */
+let actx;
+function tone(freqs, dur=0.12, type="sine"){
+  if(muted) return;
+  try{
+    actx = actx || new (window.AudioContext||window.webkitAudioContext)();
+    const t = actx.currentTime;
+    freqs.forEach((f,i)=>{
+      const o=actx.createOscillator(), g=actx.createGain();
+      o.type=type; o.frequency.value=f;
+      const s=t+i*dur;
+      g.gain.setValueAtTime(0.0001,s);
+      g.gain.exponentialRampToValueAtTime(0.18,s+0.02);
+      g.gain.exponentialRampToValueAtTime(0.0001,s+dur);
+      o.connect(g).connect(actx.destination);
+      o.start(s); o.stop(s+dur+0.02);
+    });
+  }catch(e){}
+}
+const sfx = {
+  ok:()=>tone([660,880]),
+  bad:()=>tone([240,180],0.15,"triangle"),
+  flip:()=>tone([520],0.06,"triangle"),
+  win:()=>tone([523,659,784,1047],0.14)
+};
+const ttsOK = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
+let voice = null;
+function pickVoice(){ try{ const vs=speechSynthesis.getVoices(); voice = vs.find(v=>/^ms/i.test(v.lang)) || vs.find(v=>/^id/i.test(v.lang)) || null; }catch(e){} }
+if(ttsOK){ pickVoice(); try{ speechSynthesis.onvoiceschanged = pickVoice; }catch(e){} }
+function speak(text){
+  if(!ttsOK) return;
+  try{
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text.replace(/\bSAW\b/g,"sallallahu alaihi wasallam").replace(/\bSWT\b/g,"subhanahu wa taala").replace(/[“”]/g,""));
+    u.lang = voice ? voice.lang : "ms-MY";
+    if(voice) u.voice = voice;
+    u.rate = 0.9;
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function hush(){ if(ttsOK){ try{ speechSynthesis.cancel(); }catch(e){} } }
+
+/* =================== ILLUSTRATIONS =================== */
+const SC_DEFS = `<defs>
+<linearGradient id="gN" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#121C45"/><stop offset="1" stop-color="#3B3F7A"/></linearGradient>
+<linearGradient id="gD" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#76C3E0"/><stop offset="1" stop-color="#FDE7B0"/></linearGradient>
+<linearGradient id="gE" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E9805A"/><stop offset="1" stop-color="#FFD58A"/></linearGradient>
+<radialGradient id="gGlow"><stop offset="0" stop-color="#FFF3B0"/><stop offset="1" stop-color="#FFF3B0" stop-opacity="0"/></radialGradient>
+<linearGradient id="gBeam" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#FFF3B0" stop-opacity=".9"/><stop offset="1" stop-color="#FFF3B0" stop-opacity="0"/></linearGradient>
+</defs>`;
+const sky = k => `<rect width="320" height="180" fill="url(#g${k})"/>`;
+const dunes = night => `<path d="M0 140 Q60 120 120 138 T240 132 T320 136 V180 H0Z" fill="${night?"#7A5E3E":"#E7B970"}"/><path d="M0 160 Q80 142 160 160 T320 154 V180 H0Z" fill="${night?"#5E4830":"#D49E52"}"/>`;
+const starsS = () => [[30,20],[70,42],[110,14],[150,34],[200,18],[232,50],[296,22],[58,74],[186,62],[304,70],[16,52],[128,58]].map(([x,y],i)=>`<circle class="tw" style="animation-delay:${((i*0.37)%2).toFixed(2)}s" cx="${x}" cy="${y}" r="${i%3?1.3:2}" fill="#FFF8DC"/>`).join("");
+const moon = () => `<g class="float"><circle cx="268" cy="36" r="14" fill="#F7D774"/><circle cx="275" cy="31" r="12" fill="#18224C"/></g>`;
+const sun = (x=268,y=40) => `<circle class="pulse" cx="${x}" cy="${y}" r="17" fill="#FFD34E"/>`;
+const cloud = (y,delay,dur) => `<g class="drift" style="animation-duration:${dur}s;animation-delay:-${delay}s"><g transform="translate(0 ${y})"><ellipse cx="20" cy="8" rx="20" ry="8" fill="#fff" opacity=".85"/><ellipse cx="34" cy="3" rx="14" ry="8" fill="#fff" opacity=".85"/></g></g>`;
+const kaabah = (x,y,s=1) => `<g transform="translate(${x} ${y}) scale(${s})"><polygon points="0,10 22,2 70,2 48,10" fill="#3A3A3A"/><rect x="0" y="10" width="48" height="46" fill="#1A1A1A"/><polygon points="48,10 70,2 70,46 48,56" fill="#2C2C2C"/><rect x="0" y="18" width="48" height="5" fill="#D9A82E"/><polygon points="48,18 70,10 70,15 48,23" fill="#B8891F"/><rect x="30" y="32" width="9" height="16" fill="#C9962A"/></g>`;
+const houses = night => `<g fill="${night?"#2E2A4A":"#C99A62"}"><rect x="10" y="112" width="34" height="28"/><rect x="48" y="118" width="26" height="22"/><rect x="232" y="114" width="30" height="26"/><rect x="266" y="106" width="40" height="34"/></g><g fill="${night?"#F7D774":"#8A6236"}" opacity=".8"><rect x="20" y="120" width="5" height="6"/><rect x="280" y="116" width="6" height="7"/><rect x="242" y="122" width="5" height="6"/></g>`;
+const mountain = (c="#6B513D") => `<polygon points="40,150 140,40 250,150" fill="${c}"/><polygon points="140,40 172,74 150,70 132,84 120,62" fill="#000" opacity=".14"/>`;
+function web(cx,cy){
+  let s="";
+  for(let i=0;i<8;i++){ const a=i*Math.PI/4; s+=`<line x1="${cx}" y1="${cy}" x2="${(cx+22*Math.cos(a)).toFixed(1)}" y2="${(cy+17*Math.sin(a)).toFixed(1)}"/>`; }
+  [6,12,17].forEach(r=>{ s+=`<polygon fill="none" points="${[...Array(8)].map((_,i)=>{const a=i*Math.PI/4;return (cx+r*1.25*Math.cos(a)).toFixed(1)+","+(cy+r*Math.sin(a)).toFixed(1);}).join(" ")}"/>`; });
+  return `<g stroke="#F4F4F4" stroke-width=".8" opacity=".9">${s}</g><g class="float"><circle cx="${cx+5}" cy="${cy-4}" r="2.4" fill="#222"/></g>`;
+}
+const dove = (x,y) => `<g class="float"><g transform="translate(${x} ${y})"><ellipse cx="0" cy="0" rx="8" ry="5" fill="#fff"/><circle cx="7" cy="-4" r="3.5" fill="#fff"/><path d="M10 -4 l3 1 -3 1z" fill="#E8A317"/><path d="M-3 -2 Q-1 -10 4 -3" fill="#E4E4E4"/><circle cx="8" cy="-5" r=".8" fill="#222"/></g></g>`;
+const elephant = (x,y) => `<g transform="translate(${x} ${y})"><g class="bob" style="animation-duration:1.2s" fill="#8E8E9A"><ellipse cx="30" cy="22" rx="26" ry="16"/><circle cx="56" cy="14" r="12"/><path d="M64 18 Q72 30 66 42" stroke="#8E8E9A" stroke-width="6" fill="none" stroke-linecap="round"/><rect x="10" y="30" width="8" height="16" rx="2"/><rect x="40" y="30" width="8" height="16" rx="2"/><ellipse cx="50" cy="14" rx="7" ry="9" fill="#7A7A86"/><circle cx="60" cy="10" r="1.8" fill="#222"/></g></g>`;
+const birds = () => `<g class="fly"><g fill="none" stroke="#3B2F2F" stroke-width="2" stroke-linecap="round">${[[0,30],[20,22],[38,34],[14,44],[52,26],[66,40]].map(([x,y])=>`<path d="M${x} ${y} q4 -5 8 0 q4 -5 8 0"/>`).join("")}</g></g>`;
+const camel = (x,c="#9A6634") => `<g transform="translate(${x} 0)"><g class="bob" fill="${c}"><ellipse cx="20" cy="16" rx="13" ry="7"/><ellipse cx="18" cy="10" rx="7" ry="6"/><path d="M31 14 Q36 10 36 4" stroke="${c}" stroke-width="4" fill="none"/><ellipse cx="38" cy="4" rx="4.5" ry="2.6"/><rect x="10" y="20" width="2.5" height="11"/><rect x="15" y="20" width="2.5" height="11"/><rect x="24" y="20" width="2.5" height="11"/><rect x="29" y="20" width="2.5" height="11"/><rect x="12" y="6" width="12" height="4" fill="#C0573E"/></g></g>`;
+const caravan = () => `<g class="walk"><g transform="translate(0 110) scale(1.1)">${camel(0)}${camel(46,"#8A5A2B")}${camel(92)}</g></g>`;
+const mosque = (x,y,green) => { const d=green?"#2E8B57":"#E8C36A"; return `<g transform="translate(${x} ${y})"><rect x="0" y="30" width="90" height="40" fill="#F4EBDD"/><path d="M20 30 A25 25 0 0 1 70 30Z" fill="${d}"/><rect x="43" y="-2" width="4" height="8" fill="${d}"/><rect x="96" y="-10" width="14" height="80" fill="#F4EBDD"/><path d="M96 -10 A7 7 0 0 1 110 -10Z" fill="${d}"/><rect x="100" y="8" width="6" height="9" rx="3" fill="#5B4636"/><rect x="38" y="46" width="14" height="24" rx="7" fill="#5B4636"/><rect x="12" y="44" width="10" height="12" rx="5" fill="#5B4636"/><rect x="68" y="44" width="10" height="12" rx="5" fill="#5B4636"/></g>`; };
+const palm = (x,y,s=1) => `<g transform="translate(${x} ${y}) scale(${s})"><path d="M0 0 Q4 -30 2 -55" stroke="#7A5230" stroke-width="5" fill="none"/><g class="sway" fill="#3E8E4E"><path d="M2 -55 Q-20 -60 -30 -45 Q-15 -56 2 -52Z"/><path d="M2 -55 Q24 -62 34 -46 Q18 -56 2 -52Z"/><path d="M2 -55 Q-8 -75 -22 -72 Q-6 -66 2 -53Z"/><path d="M2 -55 Q14 -76 28 -70 Q12 -66 2 -53Z"/></g></g>`;
+const tent = (x,y,c) => `<g transform="translate(${x} ${y})"><polygon points="0,30 25,0 50,30" fill="${c}"/><polygon points="20,30 25,12 30,30" fill="#3B2A1A"/><line x1="25" y1="0" x2="25" y2="-6" stroke="#5B4636" stroke-width="2"/></g>`;
+const flag = (x,y,c) => `<g transform="translate(${x} ${y})"><rect x="0" y="0" width="2.5" height="42" fill="#5B4636"/><g class="wave"><path d="M2.5 2 L28 8 L2.5 15Z" fill="${c}"/></g></g>`;
+const well = (cx,cy) => `<rect x="${cx-12}" y="${cy-8}" width="24" height="9" fill="#9C8A72"/><ellipse cx="${cx}" cy="${cy+1}" rx="12" ry="4" fill="#7E6E5A"/><ellipse cx="${cx}" cy="${cy-8}" rx="12" ry="4" fill="#3A6E8F"/>`;
+const sparkles = () => [...Array(8)].map((_,i)=>`<circle class="rise" style="animation-delay:${(i*0.5).toFixed(1)}s" cx="${145+(i*7)%30}" cy="150" r="2" fill="#FFF3B0"/>`).join("");
+
+const SCENES = {
+  makkah:()=>sky("N")+starsS()+moon()+`<path d="M0 120 Q80 92 160 116 T320 106 V180 H0Z" fill="#2A2547"/>`+dunes(true)+houses(true)+kaabah(125,86),
+  gajah:()=>sky("D")+sun()+cloud(20,0,26)+dunes(false)+kaabah(250,104,.55)+elephant(40,104)+birds(),
+  kemah:()=>sky("D")+sun(60,38)+cloud(28,8,30)+dunes(false)+tent(60,108,"#C0573E")+tent(122,114,"#8E5BA8")+tent(200,110,"#2F7F7A")+palm(282,142,.9),
+  hira:()=>sky("N")+starsS()+moon()+mountain()+`<circle class="pulse" cx="150" cy="118" r="44" fill="url(#gGlow)"/><ellipse cx="150" cy="122" rx="20" ry="16" fill="#2A1D12"/><ellipse class="pulse" cx="150" cy="124" rx="11" ry="9" fill="#FFE9A0" opacity=".55"/>`+dunes(true),
+  thur:()=>sky("E")+sun(60,58)+mountain("#7A5A42")+`<ellipse cx="150" cy="120" rx="22" ry="18" fill="#2A1D12"/>`+web(150,119)+dove(190,92)+dunes(false),
+  unta:()=>sky("E")+sun(250,70)+cloud(24,10,34)+dunes(false)+caravan(),
+  masjid:()=>sky("D")+sun()+cloud(22,5,28)+dunes(false)+palm(40,142)+mosque(110,72,false)+palm(292,142,.8),
+  madinah:()=>sky("D")+sun(50,40)+cloud(30,14,30)+dunes(false)+palm(30,142)+palm(72,146,.8)+mosque(140,72,true)+palm(292,142),
+  langit:()=>sky("N")+starsS()+`<polygon class="pulse" points="140,150 180,150 240,0 80,0" fill="url(#gBeam)"/>`+sparkles()+dunes(true)+kaabah(138,112,.6),
+  badar:()=>sky("D")+sun()+dunes(false)+well(110,140)+well(170,146)+flag(220,98,"#2E8B57")+flag(250,104,"#E8A317")+palm(40,142)
+};
+const SCENE_LABEL = {makkah:"Kaabah di kota Makkah pada waktu malam",gajah:"Gajah dan burung di padang pasir",kemah:"Khemah di kampung padang pasir",hira:"Gua Hira’ di atas gunung pada waktu malam",thur:"Gua Thur dengan sarang labah-labah",unta:"Kafilah unta merentasi padang pasir",masjid:"Masjid di antara pokok kurma",madinah:"Masjid berkubah hijau di Madinah",langit:"Cahaya naik ke langit pada waktu malam",badar:"Telaga dan bendera di padang pasir"};
+const scene = k => `<svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" role="img" aria-label="${SCENE_LABEL[k]||"Ilustrasi"}">${SC_DEFS}${SCENES[k]()}</svg>`;
+
+function mascot(mood="idle"){
+  const mouth = mood==="sad"
+    ? `<path d="M105 34 Q110 30 115 34" stroke="#5A3A1E" stroke-width="2" fill="none" stroke-linecap="round"/>`
+    : `<path d="M104 31 Q110 37 116 31" stroke="#5A3A1E" stroke-width="2" fill="none" stroke-linecap="round"/>`;
+  return `<svg class="mascot ${mood}" viewBox="0 0 130 110" aria-hidden="true">
+    <g fill="#C98B4E"><rect x="36" y="70" width="8" height="32" rx="4"/><rect x="50" y="72" width="8" height="30" rx="4"/><rect x="70" y="72" width="8" height="30" rx="4"/><rect x="84" y="70" width="8" height="32" rx="4"/></g>
+    <path d="M28 62 Q16 66 18 80" stroke="#C98B4E" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <ellipse cx="62" cy="62" rx="36" ry="20" fill="#E0A863"/>
+    <ellipse cx="56" cy="46" rx="18" ry="15" fill="#E0A863"/>
+    <path d="M88 58 Q96 44 98 28" stroke="#E0A863" stroke-width="16" fill="none" stroke-linecap="round"/>
+    <ellipse cx="90" cy="19" rx="3.5" ry="6" fill="#C98B4E"/>
+    <ellipse cx="102" cy="24" rx="15" ry="12" fill="#E0A863"/>
+    <ellipse cx="111" cy="30" rx="9" ry="7" fill="#EDC48F"/>
+    <rect x="91" y="6" width="22" height="9" rx="2" fill="#1F1F1F"/>
+    <circle cx="103" cy="21" r="3.2" fill="#2A1A0A"/><circle cx="104" cy="20" r="1" fill="#fff"/>
+    <circle cx="97" cy="28" r="3" fill="#F2A0A0" opacity=".7"/>
+    ${mouth}
+  </svg>`;
+}
+const STAR_SVG = `<svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="var(--gold)" stroke-width="3.5"><rect x="20" y="20" width="60" height="60"/><rect x="20" y="20" width="60" height="60" transform="rotate(45 50 50)"/><circle cx="50" cy="50" r="14"/></g></svg>`;
+const CARD_BACK = `<svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="5"><rect x="22" y="22" width="56" height="56"/><rect x="22" y="22" width="56" height="56" transform="rotate(45 50 50)"/></g></svg>`;
+const starsHTML = n => [0,1,2].map(i=>`<span class="${i<n?"":"off"}">⭐</span>`).join("");
+
+/* =================== HOME =================== */
+function muteBtn(){ return `<button class="iconbtn" data-act="mute" aria-label="${muted?"Hidupkan bunyi":"Matikan bunyi"}">${muted?"🔇":"🔊"}</button>`; }
+
+function renderHome(){
+  hush(); run = null;
+  const ts = totalStars();
+  const greet = pname
+    ? `<div class="greet">${mascot("idle")}<div class="bubble">Assalamualaikum, <b>${esc(pname)}</b>! Saya Kiki. ${ts?`Kamu sudah kumpul ${ts} ⭐. Jom tambah lagi!`:"Jom main dan belajar bersama saya!"}</div></div>`
+    : `<div class="greet">${mascot("idle")}<div class="bubble namecard"><label for="nm">Assalamualaikum! Saya Kiki. Siapa nama kamu?</label><input id="nm" maxlength="20" autocomplete="off" placeholder="Tulis nama kamu"><button class="primary" data-act="savename" style="margin-top:4px">Mula</button></div></div>`;
+  app.innerHTML = `
+    <div class="topbar">${pname?`<button class="link" data-act="rename">Tukar nama</button>`:"<span></span>"}${muteBtn()}</div>
+    <header class="hero">${STAR_SVG}<h1>Jom Belajar<br>Sirah & Akhlak</h1>${greet}</header>
+    <div class="levels" role="group" aria-label="Pilih tahap">
+      <button data-act="level" data-l="1" aria-pressed="${level===1}">${LEVELS[1]}</button>
+      <button data-act="level" data-l="2" aria-pressed="${level===2}">${LEVELS[2]}</button>
+    </div>
+    <div class="games">
+      <button class="tile t4 wide" data-act="cerita">
+        <span class="thumb">${scene("unta")}</span>
+        <span><h2>Cerita Sirah</h2><p>Baca dan dengar kisah Nabi Muhammad SAW bergambar.</p></span>
+        <span class="best">${stories.length}/${STORIES.length} 📖</span>
+      </button>
+      <button class="tile t1" data-act="play-quiz">
+        <span class="ico" aria-hidden="true">📜</span>
+        <span><h2>Kuiz Sirah</h2><p>Jawab soalan tentang kehidupan Nabi SAW.</p></span>
+        <span class="best" aria-label="Bintang terbaik ${best.quiz}">${starsHTML(best.quiz)}</span>
+      </button>
+      <button class="tile t2" data-act="play-akhlak">
+        <span class="ico" aria-hidden="true">🤲</span>
+        <span><h2>Terpuji atau Tercela?</h2><p>Leret kad akhlak ke kiri atau kanan.</p></span>
+        <span class="best" aria-label="Bintang terbaik ${best.akhlak}">${starsHTML(best.akhlak)}</span>
+      </button>
+      <button class="tile t3" data-act="play-susun">
+        <span class="ico" aria-hidden="true">🧭</span>
+        <span><h2>Susun Peristiwa</h2><p>Susun peristiwa Sirah ikut urutan masa.</p></span>
+        <span class="best" aria-label="Bintang terbaik ${best.susun}">${starsHTML(best.susun)}</span>
+      </button>
+      <button class="tile t5" data-act="play-padan">
+        <span class="ico" aria-hidden="true">🃏</span>
+        <span><h2>Padan Kad</h2><p>Terbalikkan kad dan cari pasangannya.</p></span>
+        <span class="best" aria-label="Bintang terbaik ${best.padan}">${starsHTML(best.padan)}</span>
+      </button>
+    </div>
+    <section class="badges">
+      <h3>Lencana kamu (${badges.length}/${BADGES.length})</h3>
+      <div class="bgrid">${BADGES.map(b=>{const got=badges.includes(b.id);return `<div class="badge ${got?"got":"locked"}"><span class="bm" aria-hidden="true">${got?b.m:"🔒"}</span>${b.n}<small>${got?"Sudah dapat":b.h}</small></div>`;}).join("")}</div>
+    </section>
+    <p class="foot">Guru boleh semak kandungan dengan buku teks KAFA sebelum digunakan di kelas.</p>`;
+}
+
+function head(title, done, total, back="home"){
+  const bar = total ? `<div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="${total}" aria-valuenow="${done}"><span style="width:${Math.round(done/total*100)}%"></span></div>` : "";
+  return `<div class="gamehead"><button class="iconbtn" data-act="${back}" aria-label="Kembali">←</button><h2>${title}</h2>${muteBtn()}</div>${bar}`;
+}
+
+function fbHTML(ok, text, btnLabel, streak=0, act="next"){
+  return `<div class="feedback">${mascot(ok?"happy":"sad")}<div><strong>${ok?pick(PRAISE):"Belum tepat, tak apa!"}</strong>${ok&&streak>=3?`<span class="streak">🔥 ${streak} betul berturut-turut!</span><br>`:""}${text}</div></div>
+    <button class="primary" data-act="${act}">${btnLabel}</button>`;
+}
+function focusNext(){ const b=$("fb")&&$("fb").querySelector(".primary"); if(b) b.focus({preventScroll:true}); if(b) b.scrollIntoView({block:"nearest",behavior:"smooth"}); }
+
+/* =================== CERITA SIRAH =================== */
+function storyList(){
+  hush(); run = {game:"cerita"};
+  app.innerHTML = head("Cerita Sirah", 0, 0) + `
+    <div class="slist">${STORIES.map((s,i)=>`
+      <button class="sitem" data-act="story" data-s="${i}">
+        <span class="thumb">${scene(s.sc)}</span>
+        <span><h3>${s.title}</h3><p>${s.sub}</p></span>
+        <span class="done" aria-label="${stories.includes(s.id)?"Sudah dibaca":"Belum dibaca"}">${stories.includes(s.id)?"✅":"▶️"}</span>
+      </button>`).join("")}
+    </div>`;
+}
+function openStory(i){ run = {game:"cerita", s:i, p:0}; showStoryPage(); }
+function showStoryPage(){
+  hush();
+  const S = STORIES[run.s], p = S.pages[run.p], n = S.pages.length;
+  run.say = p.t;
+  app.innerHTML = head(S.title, run.p, n+1, "cerita") + `
+    <div class="card page-in">
+      <div class="scene">${scene(p.sc)}</div>
+      <p class="storytext">${p.t}</p>
+      <div class="storynav">
+        <button class="secondary" data-act="sprev" aria-label="Halaman sebelum" ${run.p===0?"disabled":""}>◀</button>
+        ${ttsOK?`<button class="pill" data-act="say" style="padding:9px 12px">🔊 Dengar</button>`:"<span></span>"}
+        <button class="primary" data-act="snext">${run.p+1<n?"Seterusnya":"Jawab soalan"}</button>
+      </div>
+      <div class="dots" aria-hidden="true">${[...Array(n+1)].map((_,i)=>`<i class="${i===run.p?"on":""}"></i>`).join("")}</div>
+    </div>`;
+}
+function showStoryQ(){
+  hush();
+  const S = STORIES[run.s], q = S.q;
+  run.opts = shuffle(q.a.map((t,i)=>({t,ok:i===0})));
+  run.say = q.q + ". " + run.opts.map((o,k)=>"ABCD"[k]+", "+o.t).join(". ");
+  app.innerHTML = head(S.title, S.pages.length, S.pages.length+1, "cerita") + `
+    <div class="card page-in">
+      <div class="greet" style="margin:0 0 10px;justify-content:flex-start">${mascot("idle")}<div class="bubble" style="margin-bottom:24px">Kamu dah baca ceritanya. Cuba jawab soalan ini!</div></div>
+      <div class="qrow"><p class="qnum">Soalan cerita</p><span class="tools">${ttsOK?`<button class="pill" data-act="say">🔊 Dengar</button>`:""}</span></div>
+      <p class="qtext">${q.q}</p>
+      <div class="opts">${run.opts.map((o,k)=>`<button class="opt" data-act="sq" data-k="${k}"><span class="k">${"ABCD"[k]}</span><span>${o.t}</span></button>`).join("")}</div>
+      <div id="fb" aria-live="polite"></div>
+    </div>`;
+}
+function storyAnswer(k){
+  const btns=[...app.querySelectorAll(".opt")]; btns.forEach(b=>b.disabled=true);
+  const right = run.opts.findIndex(o=>o.ok), ok = k===right;
+  btns[right].classList.add("ok");
+  if(ok) sfx.ok(); else { btns[k].classList.add("bad"); sfx.bad(); }
+  $("fb").innerHTML = fbHTML(ok, STORIES[run.s].q.e, "Selesai cerita", 0, "sdone");
+  focusNext();
+}
+function storyDone(){
+  const id = STORIES[run.s].id;
+  const first = !stories.includes(id);
+  if(first){ stories.push(id); save("kafa-stories", stories); }
+  checkBadges();
+  sfx.win();
+  if(first && stories.length===STORIES.length) rain();
+  storyList();
+}
+
+/* =================== KUIZ SIRAH =================== */
+function startQuiz(){
+  const pool = SIRAH.filter(q=>q.l<=level);
+  run = {game:"quiz", items:shuffle(pool).slice(0,10), i:0, score:0, streak:0, fifty:false};
+  showQuiz();
+}
+function showQuiz(){
+  hush();
+  const q = run.items[run.i];
+  run.opts = shuffle(q.a.map((t,idx)=>({t, ok:idx===0})));
+  run.answered = false;
+  run.say = q.q + ". " + run.opts.map((o,k)=>"ABCD"[k]+", "+o.t).join(". ");
+  app.innerHTML = head("Kuiz Sirah", run.i, run.items.length) + `
+    <div class="card page-in">
+      <div class="scene short">${scene(q.s)}</div>
+      <div class="qrow"><p class="qnum">Soalan ${run.i+1} daripada ${run.items.length}</p>
+        <span class="tools">${ttsOK?`<button class="pill" data-act="say" aria-label="Dengar soalan">🔊 Dengar</button>`:""}<button class="pill" data-act="fifty" ${run.fifty?"disabled":""} aria-label="Bantuan 50:50, buang dua jawapan salah">✂️ 50:50</button></span></div>
+      <p class="qtext">${q.q}</p>
+      <div class="opts">${run.opts.map((o,k)=>`<button class="opt" data-act="qa" data-k="${k}"><span class="k">${"ABCD"[k]}</span><span>${o.t}</span></button>`).join("")}</div>
+      <div id="fb" aria-live="polite"></div>
+    </div>`;
+}
+function useFifty(btn){
+  if(run.fifty || run.answered) return;
+  run.fifty = true; btn.disabled = true;
+  const wrong = shuffle(run.opts.map((o,i)=>o.ok?-1:i).filter(i=>i>=0)).slice(0,2);
+  const btns = app.querySelectorAll(".opt");
+  wrong.forEach(i=>{ btns[i].classList.add("gone"); btns[i].disabled=true; });
+  sfx.flip();
+}
+function quizAnswer(k){
+  if(run.answered) return; run.answered = true;
+  hush();
+  const btns = [...app.querySelectorAll(".opt")];
+  btns.forEach(b=>b.disabled=true);
+  const fiftyBtn = app.querySelector('[data-act="fifty"]'); if(fiftyBtn) fiftyBtn.disabled = true;
+  const right = run.opts.findIndex(o=>o.ok), ok = k===right;
+  btns[right].classList.add("ok");
+  if(ok){ run.score++; run.streak++; sfx.ok(); } else { run.streak=0; btns[k].classList.add("bad"); sfx.bad(); }
+  const last = run.i+1 >= run.items.length;
+  $("fb").innerHTML = fbHTML(ok, run.items[run.i].e, last?"Lihat keputusan":"Soalan seterusnya", run.streak);
+  focusNext();
+}
+function quizNext(){
+  run.i++;
+  if(run.i < run.items.length){ showQuiz(); window.scrollTo(0,0); }
+  else { const s=run.score, n=run.items.length; finish("quiz", s>=9?3:s>=7?2:s>=5?1:0, `Kamu menjawab ${s} daripada ${n} soalan dengan betul.`); }
+}
+
+/* =================== TERPUJI ATAU TERCELA =================== */
+function startAkhlak(){
+  run = {game:"akhlak", items:shuffle(AKHLAK).slice(0,10), i:0, score:0, streak:0};
+  showAkhlak();
+}
+function showAkhlak(){
+  hush();
+  const c = run.items[run.i];
+  run.locked = false;
+  run.say = c.t + " Akhlak ini terpuji atau tercela?";
+  app.innerHTML = head("Terpuji atau Tercela?", run.i, run.items.length) + `
+    <div class="qrow" style="margin-bottom:8px"><p class="qnum">Situasi ${run.i+1} daripada ${run.items.length}</p>${ttsOK?`<button class="pill" data-act="say">🔊 Dengar</button>`:""}</div>
+    <div class="swipe-area" id="sa">
+      <div class="swipecard page-in" id="sc">
+        <span class="lean l">👎 Tercela</span><span class="lean r">Terpuji 👍</span>
+        <div class="emo" aria-hidden="true">${c.m}</div>
+        <p class="qtext">${c.t}</p>
+      </div>
+    </div>
+    <div id="ctl">
+      <p class="ask">Leret kad ke kanan jika terpuji, ke kiri jika tercela. Atau tekan butang.</p>
+      <div class="tf">
+        <button class="badb" data-act="akb" data-v="0"><span aria-hidden="true">👎</span>Tercela</button>
+        <button class="good" data-act="akb" data-v="1"><span aria-hidden="true">👍</span>Terpuji</button>
+      </div>
+    </div>
+    <div id="fb" aria-live="polite"></div>`;
+  bindSwipe($("sc"));
+}
+function bindSwipe(card){
+  let sx=0, dx=0, drag=false;
+  card.addEventListener("pointerdown", e=>{ if(run.locked) return; drag=true; sx=e.clientX; dx=0; try{card.setPointerCapture(e.pointerId);}catch(_){} card.style.transition="none"; });
+  card.addEventListener("pointermove", e=>{ if(!drag) return; dx=e.clientX-sx; card.style.transform=`translateX(${dx}px) rotate(${dx/18}deg)`; card.dataset.lean = dx>40?"good":dx<-40?"bad":""; });
+  const end = ()=>{ if(!drag) return; drag=false; card.style.transition="";
+    if(dx>90) akhlakAnswer(true); else if(dx<-90) akhlakAnswer(false); else { card.style.transform=""; card.dataset.lean=""; } };
+  card.addEventListener("pointerup", end);
+  card.addEventListener("pointercancel", end);
+}
+function akhlakAnswer(chose){
+  if(run.locked) return; run.locked = true;
+  hush();
+  const c = run.items[run.i], ok = chose===c.g;
+  const card = $("sc");
+  card.dataset.lean = chose?"good":"bad";
+  card.style.transition = "transform .35s ease-in, opacity .35s";
+  card.style.transform = `translateX(${chose?130:-130}%) rotate(${chose?18:-18}deg)`;
+  card.style.opacity = "0";
+  if(ok){ run.score++; run.streak++; sfx.ok(); } else { run.streak=0; sfx.bad(); }
+  $("ctl").remove();
+  const last = run.i+1 >= run.items.length;
+  setTimeout(()=>{
+    $("sa").innerHTML = `<div class="verdict page-in"><div class="emo" aria-hidden="true">${c.m}</div><p class="qtext" style="margin:6px 0 0">${c.t}</p><span class="stamp ${c.g?"g":"b"}">${c.g?"👍 Terpuji":"👎 Tercela"}</span></div>`;
+    $("fb").innerHTML = fbHTML(ok, c.x, last?"Lihat keputusan":"Situasi seterusnya", run.streak);
+    focusNext();
+  }, 320);
+}
+function akhlakNext(){
+  run.i++;
+  if(run.i < run.items.length){ showAkhlak(); window.scrollTo(0,0); }
+  else { const s=run.score, n=run.items.length; finish("akhlak", s>=9?3:s>=7?2:s>=5?1:0, `Kamu mengenal pasti ${s} daripada ${n} situasi dengan betul.`); }
+}
+
+/* =================== SUSUN PERISTIWA =================== */
+function startSusun(){ run = {game:"susun", r:0, mistakes:0}; showRound(); }
+function showRound(){
+  hush();
+  const R = ROUNDS[run.r];
+  run.next = 0;
+  const order = shuffle(R.items.map((t,i)=>({t,i})));
+  app.innerHTML = head("Susun Peristiwa", run.r, ROUNDS.length) + `
+    <div class="card page-in">
+      <div class="scene short">${scene(R.sc)}</div>
+      <p class="qnum">Pusingan ${run.r+1} daripada ${ROUNDS.length}</p>
+      <p class="qtext">${R.title}</p>
+      <p class="hint">Tekan peristiwa mengikut urutan, bermula dengan yang paling awal.</p>
+      <ol class="slots">${R.items.map((_,i)=>`<li class="slot" id="s${i}"><span class="n">${i+1}</span><span class="st"></span></li>`).join("")}</ol>
+      <div class="chips">${order.map(o=>`<button class="chip" data-act="chip" data-i="${o.i}">${o.t}</button>`).join("")}</div>
+      <div id="fb" aria-live="polite"></div>
+    </div>`;
+}
+function chipTap(b){
+  const R = ROUNDS[run.r], i = +b.dataset.i;
+  if(i===run.next){
+    sfx.ok();
+    const s = $("s"+i);
+    s.classList.add("filled");
+    s.querySelector(".st").textContent = R.items[i];
+    b.remove();
+    run.next++;
+    if(run.next===R.items.length){
+      const last = run.r+1 >= ROUNDS.length;
+      $("fb").innerHTML = fbHTML(true, R.note, last?"Lihat keputusan":"Pusingan seterusnya");
+      focusNext();
+    } else { const nx = app.querySelector(".chip"); if(nx) nx.focus({preventScroll:true}); }
+  } else {
+    sfx.bad(); run.mistakes++;
+    b.classList.remove("shake"); void b.offsetWidth; b.classList.add("shake");
+  }
+}
+function susunNext(){
+  run.r++;
+  if(run.r < ROUNDS.length){ showRound(); window.scrollTo(0,0); }
+  else { const m=run.mistakes; finish("susun", m<=1?3:m<=4?2:1, m===0?"Kamu menyusun semua peristiwa tanpa sebarang kesilapan.":`Kamu menyusun semua peristiwa dengan ${m} kesilapan.`); }
+}
+
+/* =================== PADAN KAD =================== */
+function startPadan(){
+  const n = level===1 ? 6 : 8;
+  const pairs = shuffle(PAIRS).slice(0,n);
+  const cards = shuffle(pairs.flatMap((p,i)=>[{id:i,t:p[0],k:"a"},{id:i,t:p[1],k:"b"}]));
+  run = {game:"padan", cards, open:[], matched:0, moves:0, pairs:n, lock:false};
+  showPadan();
+}
+function showPadan(){
+  hush();
+  app.innerHTML = head("Padan Kad", run.matched, run.pairs) + `
+    <div class="card page-in">
+      <p class="hint" style="margin:0 0 10px">Terbalikkan dua kad. Padankan nama dengan maksudnya.</p>
+      <div class="moves"><span id="mv">Cubaan: 0</span><span id="mt">Pasangan: 0/${run.pairs}</span></div>
+      <div class="mgrid ${run.pairs>6?"g4":""}">${run.cards.map((c,i)=>`
+        <button class="mcard" data-act="card" data-i="${i}" aria-label="Kad tertutup">
+          <span class="in"><span class="f">${CARD_BACK}</span><span class="b ${c.k==="b"?"kb":""}">${c.t}</span></span>
+        </button>`).join("")}
+      </div>
+    </div>`;
+}
+function cardTap(b){
+  if(run.lock) return;
+  const i = +b.dataset.i;
+  if(b.classList.contains("open") || b.classList.contains("matched")) return;
+  b.classList.add("open"); b.setAttribute("aria-label", run.cards[i].t); sfx.flip();
+  run.open.push(b);
+  if(run.open.length<2) return;
+  run.moves++; $("mv").textContent = "Cubaan: "+run.moves;
+  const [x,y] = run.open; run.open = [];
+  if(run.cards[+x.dataset.i].id === run.cards[+y.dataset.i].id){
+    run.matched++;
+    setTimeout(()=>{ x.classList.replace("open","matched"); y.classList.replace("open","matched"); x.disabled=y.disabled=true; sfx.ok(); }, 350);
+    $("mt").textContent = `Pasangan: ${run.matched}/${run.pairs}`;
+    const bar = app.querySelector(".progress span"); if(bar) bar.style.width = Math.round(run.matched/run.pairs*100)+"%";
+    if(run.matched===run.pairs){
+      const n=run.pairs, m=run.moves;
+      setTimeout(()=>finish("padan", m<=n+3?3:m<=n+7?2:1, `Kamu memadankan semua ${n} pasangan dalam ${m} cubaan.`), 1100);
+    }
+  } else {
+    run.lock = true;
+    setTimeout(()=>{ sfx.bad(); }, 300);
+    setTimeout(()=>{ [x,y].forEach(c=>{ c.classList.remove("open"); c.setAttribute("aria-label","Kad tertutup"); }); run.lock=false; }, 1000);
+  }
+}
+
+/* =================== RESULT, BADGES =================== */
+function checkBadges(){
+  const fresh = [];
+  BADGES.forEach(b=>{ if(!badges.includes(b.id) && b.test()){ badges.push(b.id); fresh.push(b); } });
+  if(fresh.length){ save("kafa-badges", badges); fresh.forEach((b,i)=>setTimeout(()=>toast(`🏅 Lencana baharu: ${b.m} ${b.n}`), 700+i*2700)); }
+  return fresh;
+}
+function finish(game, stars, line){
+  hush();
+  const prev = best[game];
+  if(stars>prev){ best[game]=stars; save("kafa-best", best); }
+  const fresh = checkBadges();
+  const titles = ["Jom cuba sekali lagi","Boleh cuba lagi","Bagus!","Cemerlang!"];
+  app.innerHTML = `
+    <div class="card result page-in" style="margin-top:20px">
+      ${mascot(stars>=2?"happy":"idle")}
+      <div class="stars" role="img" aria-label="${stars} daripada 3 bintang">${starsHTML(stars)}</div>
+      <h2>${titles[stars]}${pname&&stars>=2?", "+esc(pname)+"!":""}</h2>
+      <p>${line}</p>
+      ${stars>prev?`<p>Rekod baharu untuk permainan ini.</p>`:""}
+      ${fresh.map(b=>`<span class="newbadge">🏅 ${b.m} ${b.n}</span>`).join("")}
+      <button class="primary" data-act="again">Main lagi</button>
+      <button class="secondary" data-act="home">Kembali ke menu</button>
+    </div>`;
+  sfx.win();
+  if(stars===3) rain();
+  window.scrollTo(0,0);
+}
+function rain(){
+  const box = document.createElement("div"); box.className = "rain";
+  for(let i=0;i<28;i++){
+    const s = document.createElement("span");
+    s.textContent = pick(["⭐","✨","🌙"]);
+    s.style.left = Math.random()*100+"vw";
+    s.style.animationDuration = (2+Math.random()*2)+"s";
+    s.style.animationDelay = (Math.random()*0.8)+"s";
+    box.appendChild(s);
+  }
+  document.body.appendChild(box);
+  setTimeout(()=>box.remove(), 4500);
+}
+function toast(msg){
+  const t = document.createElement("div");
+  t.className = "toast"; t.setAttribute("role","status"); t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(()=>t.classList.add("out"), 2200);
+  setTimeout(()=>t.remove(), 2700);
+}
+function saveName(){
+  const v = ($("nm")&&$("nm").value||"").trim();
+  if(!v){ $("nm").focus(); return; }
+  pname = v.slice(0,20); save("kafa-name", pname); sfx.ok(); renderHome();
+}
+
+/* =================== EVENTS =================== */
+app.addEventListener("keydown", e=>{ if(e.target.id==="nm" && e.key==="Enter") saveName(); });
+app.addEventListener("click", e=>{
+  const b = e.target.closest("button");
+  if(!b || b.disabled) return;
+  const act = b.dataset.act;
+  switch(act){
+    case "home": renderHome(); window.scrollTo(0,0); break;
+    case "mute":
+      muted = !muted; save("kafa-muted", muted);
+      b.textContent = muted?"🔇":"🔊";
+      b.setAttribute("aria-label", muted?"Hidupkan bunyi":"Matikan bunyi");
+      if(muted) hush();
+      break;
+    case "savename": saveName(); break;
+    case "rename": pname=""; save("kafa-name",""); renderHome(); break;
+    case "level":
+      level = +b.dataset.l; save("kafa-level", level);
+      app.querySelectorAll('[data-act="level"]').forEach(x=>x.setAttribute("aria-pressed", String(+x.dataset.l===level)));
+      break;
+    case "say": if(run && run.say) speak(run.say); break;
+    case "cerita": storyList(); window.scrollTo(0,0); break;
+    case "story": openStory(+b.dataset.s); window.scrollTo(0,0); break;
+    case "sprev": if(run.p>0){ run.p--; showStoryPage(); } break;
+    case "snext": if(run.p+1 < STORIES[run.s].pages.length){ run.p++; showStoryPage(); } else showStoryQ(); window.scrollTo(0,0); break;
+    case "sq": storyAnswer(+b.dataset.k); break;
+    case "sdone": storyDone(); window.scrollTo(0,0); break;
+    case "play-quiz": startQuiz(); window.scrollTo(0,0); break;
+    case "play-akhlak": startAkhlak(); window.scrollTo(0,0); break;
+    case "play-susun": startSusun(); window.scrollTo(0,0); break;
+    case "play-padan": startPadan(); window.scrollTo(0,0); break;
+    case "qa": quizAnswer(+b.dataset.k); break;
+    case "fifty": useFifty(b); break;
+    case "akb": akhlakAnswer(b.dataset.v==="1"); break;
+    case "chip": chipTap(b); break;
+    case "card": cardTap(b); break;
+    case "next":
+      if(run.game==="quiz") quizNext();
+      else if(run.game==="akhlak") akhlakNext();
+      else if(run.game==="susun") susunNext();
+      break;
+    case "again":
+      ({quiz:startQuiz, akhlak:startAkhlak, susun:startSusun, padan:startPadan})[run.game]();
+      window.scrollTo(0,0);
+      break;
+  }
+});
+
+renderHome();
+</script>
+</body>
+</html>
